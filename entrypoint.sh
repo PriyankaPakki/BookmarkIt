@@ -1,17 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
-echo "[entrypoint.sh] Starting BookmarkIt app..."
+echo "[entrypoint] Running Django migrations..."
+python manage.py migrate
 
-# Go to project root
-cd "$(dirname "$0")"
+echo "[entrypoint] Creating superuser if needed..."
+python manage.py create_superuser
 
-echo "[entrypoint.sh] Pulling latest changes from Git..."
-git pull origin main
-
-echo "[entrypoint.sh] Stopping existing containers..."
-docker-compose down
-
-echo "[entrypoint.sh] Rebuilding and starting containers..."
-docker-compose up -d --build
-
-echo "[entrypoint.sh] Done! App should be live."
+echo "[entrypoint] Starting Gunicorn..."
+exec gunicorn app.wsgi:application --bind 0.0.0.0:8000

@@ -5,12 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: bookmarkit_web
-    command: >
-      sh -c "
-        python manage.py migrate &&
-        python manage.py create_superuser &&
-        gunicorn app.wsgi:application --bind 0.0.0.0:8000"
+    command: ["sh", "entrypoint.sh"]
     volumes:
       - .:/app
     ports:
-      - "8000:8000"
+      - "80:8000"
