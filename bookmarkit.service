@@ -1,0 +1,13 @@
+[Unit]
+Description=Start BookmarkIt Django app
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+User=ec2-user
+WorkingDirectory=/home/ec2-user/BookmarkIt
+ExecStart=/home/ec2-user/BookmarkIt/entrypoint.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
