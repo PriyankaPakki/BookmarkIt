@@ -4,10 +4,8 @@ services:
   db:
     image: postgres:14
     container_name: bookmarkit_db
-    environment:
-      POSTGRES_DB: bookmarkit
-      POSTGRES_USER: bookmarkituser
-      POSTGRES_PASSWORD: supersecret
+    env_file:
+      - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -25,11 +23,8 @@ services:
       - "8000:8000"
     depends_on:
       - db
-    environment:
-      POSTGRES_DB: bookmarkit
-      POSTGRES_USER: bookmarkituser
-      POSTGRES_PASSWORD: supersecret
-      POSTGRES_HOST: db
+    env_file:
+      - .env
 
 volumes:
   postgres_data:
