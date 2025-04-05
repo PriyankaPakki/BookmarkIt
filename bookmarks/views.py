@@ -28,7 +28,7 @@ def bookmark_list(request):
 @login_required
 def bookmark_create(request):
     if request.method == "POST":
-        form = BookmarkForm(request.POST)
+        form = BookmarkForm(request.POST, request.FILES)
         if form.is_valid():
             bookmark = form.save(commit=False)
             bookmark.user = request.user

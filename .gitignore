@@ -175,3 +175,7 @@ cython_debug/
 
 # pem files
 *.pem
+
+/media/
+
+.env

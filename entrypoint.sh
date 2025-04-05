@@ -1,6 +1,7 @@
 #!/bin/sh
 
 echo "[entrypoint] Running Django migrations..."
+python manage.py makemigrations
 python manage.py migrate
 
 echo "[entrypoint] Creating superuser if needed..."
