@@ -10,6 +10,9 @@
       (<a href="{% url 'bookmark_edit' bookmark.pk %}">edit</a> |
        <a href="{% url 'bookmark_delete' bookmark.pk %}">delete</a>)
       <p>{{ bookmark.description }}</p>
+      {% if bookmark.image %}
+        <img src="{{ bookmark.image.url }}" alt="{{ bookmark.title }}" width="100" />
+      {% endif %}
     </li>
   {% empty %}
     <li>No bookmarks yet.</li>

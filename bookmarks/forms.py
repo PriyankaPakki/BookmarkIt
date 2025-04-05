@@ -5,4 +5,4 @@ from .models import Bookmark
 class BookmarkForm(forms.ModelForm):
     class Meta:
         model = Bookmark
-        fields = ["title", "url", "description"]
+        fields = ["title", "url", "description", "image"]
