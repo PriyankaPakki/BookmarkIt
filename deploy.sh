@@ -1,4 +1,5 @@
 #!/bin/bash
+export PATH="/usr/local/bin:$PATH"
 
 echo "[entrypoint.sh] Starting BookmarkIt app..."
 
