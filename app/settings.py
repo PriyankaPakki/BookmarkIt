@@ -129,7 +129,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
@@ -141,6 +140,7 @@ AWS_S3_FILE_OVERWRITE = (
     os.environ.get("AWS_S3_FILE_OVERWRITE", "False").lower() == "true"
 )
 AWS_S3_VERITY = os.environ.get("AWS_S3_VERITY", "True").lower() == "true"
+MEDIA_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/"
 
 STORAGES = {
     # MEDIA FILE (image) management
